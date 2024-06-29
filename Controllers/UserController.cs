@@ -1,4 +1,5 @@
-﻿using ApiPeople.Models;
+﻿using ApiPeople.Middlewares;
+using ApiPeople.Models;
 using ApiPeople.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +13,14 @@ namespace ApiPeople.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly ILogger<UserController> _logger;
         private readonly IUserService UserService;
         private readonly IJwtAuthenticationService _jwtAuthenticationService;
 
         public UserController(
             IUserService service,
             IJwtAuthenticationService jwtAuthenticationService,
-            ILogger<WeatherForecastController> logger
+            ILogger<UserController> logger
         )
         {
             UserService = service;
@@ -102,5 +103,6 @@ namespace ApiPeople.Controllers
             return Ok(new { Token = token });
 
         }
+
     }
 }
